@@ -2,7 +2,7 @@
 import datetime
 
 
-def time_till_format(wait_time):
+def time_till_format(wait_time: str):
     """calculates the time till an event
 
     Args:
@@ -28,6 +28,10 @@ def time_till_format(wait_time):
     cur_time_sec = (((int(cur_time_h) * 60) + int(cur_time_m)) * 60) + int(cur_time_s)
     wait_time_sec = (((int(wait_time_h) * 60) + int(wait_time_m)) * 60) + int(wait_time_s)
 
+    # for the next day = when wait_time < cur_time
+    if wait_time_sec < cur_time_sec:
+        wait_time_sec += 86400
+
     # wait_time - current time (in sec) = the time till the event (in sec)
     var_time_till = wait_time_sec - cur_time_sec
 
@@ -47,13 +51,13 @@ def time_till_format(wait_time):
 
     # puts a 0 before the number,
     # if there only is one character
-    if len(time_till_h) is 1:
+    if len(time_till_h) == 1:
         time_till_h = "0" + time_till_h
 
-    if len(time_till_m) is 1:
+    if len(time_till_m) == 1:
         time_till_m = "0" + time_till_m
 
-    if len(time_till_s) is 1:
+    if len(time_till_s) == 1:
         time_till_s = "0" + time_till_s
 
     str_time_till = time_till_h + ":" + time_till_m + ":" + time_till_s
@@ -89,3 +93,22 @@ def time_till_sec(wait_time: str):
     var_time_till = wait_time_sec - cur_time_sec
 
     return var_time_till
+
+def time_in_sec(time: str):
+    """converts hh:mm:ss time in seconds
+
+    Args:
+        time(str): the time you want to convert
+
+    Returns:
+        int: time in seconds"""
+    time = str(time)
+
+    split_time = time.split(":")
+    time_h = split_time[0]
+    time_m = split_time[1]
+    time_s = split_time[2]
+
+    time =  (((int(time_h) * 60) + int(time_m)) * 60) + int(time_s)
+
+    return time
