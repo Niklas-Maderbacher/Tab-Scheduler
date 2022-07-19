@@ -25,3 +25,5 @@ def open_tab(website_link: str, time_to_open: str):
         # waits so many second, till the 
         time.sleep(int(timing.time_till_sec(time_to_open)))
         webbrowser.open(website_link, new=2, autoraise=False)
+
+open_tab("https://www.youtube.com/watch?v=PjR2CgX5vFU", "18:29:00")

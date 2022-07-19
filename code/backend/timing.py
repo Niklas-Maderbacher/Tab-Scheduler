@@ -89,6 +89,10 @@ def time_till_sec(wait_time: str):
     cur_time_sec = (((int(cur_time_h) * 60) + int(cur_time_m)) * 60) + int(cur_time_s)
     wait_time_sec = (((int(wait_time_h) * 60) + int(wait_time_m)) * 60) + int(wait_time_s)
 
+    # for the next day = when wait_time < cur_time
+    if wait_time_sec < cur_time_sec:
+        wait_time_sec += 86400
+
     # wait_time - current time (in sec) = the time till the event (in sec)
     var_time_till = wait_time_sec - cur_time_sec
 
