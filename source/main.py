@@ -1,22 +1,28 @@
-# from backend.timing import time_in_sec, time_till_format, time_till_sec
+"""inporting own backend"""
+from backend import open_tab
 
 
-text = ""
+TEXT = ""
 links_to_open = []
 
+wel_text = []
+wel_text.append()
+
+# save in txt file for pylint
 print("████████╗ █████╗ ██████╗     ███████╗ ██████╗██╗  ██╗███████╗██████╗ ██╗   ██╗██╗     ███████╗██████╗ ")
 print("╚══██╔══╝██╔══██╗██╔══██╗    ██╔════╝██╔════╝██║  ██║██╔════╝██╔══██╗██║   ██║██║     ██╔════╝██╔══██╗")
 print("   ██║   ███████║██████╔╝    ███████╗██║     ███████║█████╗  ██║  ██║██║   ██║██║     █████╗  ██████╔╝")
 print("   ██║   ██╔══██║██╔══██╗    ╚════██║██║     ██╔══██║██╔══╝  ██║  ██║██║   ██║██║     ██╔══╝  ██╔══██╗")
 print("   ██║   ██║  ██║██████╔╝    ███████║╚██████╗██║  ██║███████╗██████╔╝╚██████╔╝███████╗███████╗██║  ██║")
 print("   ╚═╝   ╚═╝  ╚═╝╚═════╝     ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝")
-                                                                                                    
-while text != "no":
+
+while TEXT != "no":
     time = input("Enter time (hours:minutes:seconds): ")
     url = input("Enter url (https://www.google.com): ")
     temp = (time, url)
     links_to_open.append(temp)
 
-    text = input("Do you want to schedule another tab? (yes/no)")
+    TEXT = input("Do you want to schedule another tab? (yes/no)")
 
-
+if len(links_to_open) == 1:
+    open_tab(temp[1], temp[0])

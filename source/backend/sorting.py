@@ -10,20 +10,20 @@ def ins_sort(lst: list):
     """
 
     try:
-        for c in range(1, len(lst)):
+        for element in range(1, len(lst)):
 
-            temp = lst[c]
+            temp = lst[element]
 
             # Move elements of list, that are
             # bigger than temp, to one position ahead
             # of their current position
-            j = c - 1
-            while j >= 0 and temp < lst[j]:
-                lst[j + 1] = lst[j]
-                j -= 1
+            element_before = element - 1
+            while element_before >= 0 and temp < lst[element_before]:
+                lst[element_before + 1] = lst[element_before]
+                element_before -= 1
             # then fills the empty spot
             # with temp
-            lst[j + 1] = temp
+            lst[element_before + 1] = temp
 
         return lst
 

@@ -12,7 +12,8 @@ def open_tab(website_link: str, time_to_open: str):
     Args:
         Website_Link(str): the link to open in the browser
         time_to_open(str): time to open the tab. Format: hh:mm:ss.
-                            If None, instantly opens the tab"""
+                            If None, instantly opens the tab
+    """
 
     current_time = str(datetime.datetime.now()).split(" ")[1].split(".")[0]
 
@@ -22,8 +23,6 @@ def open_tab(website_link: str, time_to_open: str):
         webbrowser.open(website_link, new=2, autoraise=False)
 
     else:
-        # waits so many second, till the 
+        # waits so many second, till the current time equals the input time
         time.sleep(int(timing.time_till_sec(time_to_open)))
         webbrowser.open(website_link, new=2, autoraise=False)
-
-open_tab("https://www.youtube.com/watch?v=PjR2CgX5vFU", "18:29:00")
