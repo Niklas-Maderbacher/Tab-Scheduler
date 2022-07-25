@@ -3,7 +3,7 @@
 import webbrowser
 import datetime
 import time
-import timing
+from backend import timing
 
 
 def open_tab(website_link: str, time_to_open: str):
