@@ -1,4 +1,4 @@
-"""Import datetime, to get the current time"""
+"""Things, that have to do with time"""
 import datetime
 
 
@@ -47,6 +47,9 @@ def seconds_till(event_time: str):
     if convert_to_seconds(event_time) < convert_to_seconds(current_time()):
         return ((convert_to_seconds(event_time) + 86400) -
                  convert_to_seconds(current_time()))
+
+    else:
+        return (convert_to_seconds(event_time) - convert_to_seconds(current_time()))
 
 def format_back(time: int):
     """formats time back in format hh:mm:ss

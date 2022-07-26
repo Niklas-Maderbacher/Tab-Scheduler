@@ -1,9 +1,8 @@
-"""importing webbrowser for opening tabs in the browser, importing datetime for time check,
-   import timing to get the time till an event, importing time to delay the code"""
+"""Autoopens tab"""
 import webbrowser
 import datetime
 import time
-from backend import timing
+from timing import seconds_till
 
 
 def open_tab(website_link: str, time_to_open: str):
@@ -24,7 +23,7 @@ def open_tab(website_link: str, time_to_open: str):
 
     else:
         # waits so many second, till the current time equals the input time
-        time.sleep(int(timing.seconds_till(time_to_open)))
+        time.sleep(int(seconds_till(time_to_open)))
         webbrowser.open(website_link, new=2, autoraise=False)
 
-open_tab("https://google.com", "11:47:10")
+open_tab("https://google.com", "11:57:30")

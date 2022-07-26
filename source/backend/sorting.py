@@ -1,4 +1,4 @@
-"""no modules imported"""
+"""Sorts list of tuples by first element"""
 
 def tuple_sort(lst: list):
     """sorts list of tuples by first element in tuple
