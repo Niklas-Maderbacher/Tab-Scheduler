@@ -1,6 +1,6 @@
 """inporting own backend"""
 from backend import open_tab
-from backend import time_in_sec
+from backend import convert_to_seconds, format_back
 from backend import tuple_sort
 
 TEXT = ""
@@ -22,8 +22,9 @@ print("   ╚═╝   ╚═╝  ╚═╝╚═════╝     ╚═══
 
 
 while TEXT != "no":
-    time = input("Enter time (hours:minutes:seconds): ")
     url = input("Enter url (https://www.google.com): ")
+    time = input("Enter time (hours:minutes:seconds): ")
+
     temp = (time, url)
     links_to_open.append(temp)
 
@@ -37,10 +38,11 @@ if len(links_to_open) >= 2:
 
     for element in links_to_open:
         url = element[1]
-        time_sec = time_in_sec(element[0])
+        time_sec = convert_to_seconds(element[0])
         temp = (time_sec, url)
         new_list.append(temp)
 
     new_list = tuple_sort(new_list)
 
-    print(new_list)
+    for schedule in new_list:
+        open_tab(schedule[1], format_back(schedule[0]))

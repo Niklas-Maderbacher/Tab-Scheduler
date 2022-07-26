@@ -28,7 +28,7 @@ def splitting_time(time: str):
 def convert_to_seconds(time: str):
     """Converts hh:mm:ss time into seconds
     Args:
-        time(str): time in format hh:mm:ss to convert in seconds    
+        time(str): time in format hh:mm:ss to convert in seconds
 
     Returns:
         int: time in seconds
@@ -48,7 +48,7 @@ def seconds_till(event_time: str):
         return ((convert_to_seconds(event_time) + 86400) -
                  convert_to_seconds(current_time()))
 
-    else:
+    if convert_to_seconds(event_time) > convert_to_seconds(current_time()):
         return (convert_to_seconds(event_time) - convert_to_seconds(current_time()))
 
 def format_back(time: int):
