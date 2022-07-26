@@ -24,5 +24,7 @@ def open_tab(website_link: str, time_to_open: str):
 
     else:
         # waits so many second, till the current time equals the input time
-        time.sleep(int(timing.time_till_sec(time_to_open)))
+        time.sleep(int(timing.seconds_till(time_to_open)))
         webbrowser.open(website_link, new=2, autoraise=False)
+
+open_tab("https://google.com", "11:47:10")

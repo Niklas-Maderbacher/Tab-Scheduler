@@ -1,118 +1,83 @@
-"""Import datetime, to get the time and calculate the time till the event """
+"""Import datetime, to get the current time"""
 import datetime
 
 
-def time_till_format(wait_time: str):
-    """calculates the time till an event
-
-    Args:
-        wait_time(str): the time, the event happes
+def current_time():
+    """Returns current time in format hh:mm:ss
 
     Returns:
-        str: time the event in hh:mm:ss"""
-    cur_time = str(datetime.datetime.now()).split(" ")[1].split(".")[0]
-    wait_time = str(wait_time)
+        str: current time
+    """
+    return str(datetime.datetime.now()).split(" ")[1].split(".")[0]
 
-    # get hours, min, sec from format hh:mm:ss
-    split_cur_time = cur_time.split(":")
-    cur_time_h = split_cur_time[0]
-    cur_time_m = split_cur_time[1]
-    cur_time_s = split_cur_time[2]
+def splitting_time(time: str):
+    """Splits time (hh:mm:ss) in own variables
+    Args:
+        time(str): the time to convert
 
-    split_wait_time = wait_time.split(":")
-    wait_time_h = split_wait_time[0]
-    wait_time_m = split_wait_time[1]
-    wait_time_s = split_wait_time[2]
+    Returns:
+        lst: [hours, minutes, seconds]
+    """
+    split_time = time.split(":")
+    hours = split_time[0]
+    minutes = split_time[1]
+    seconds = split_time[2]
 
-    # converts the time hh:mm:ss in seconds
-    cur_time_sec = (((int(cur_time_h) * 60) + int(cur_time_m)) * 60) + int(cur_time_s)
-    wait_time_sec = (((int(wait_time_h) * 60) + int(wait_time_m)) * 60) + int(wait_time_s)
+    return [hours, minutes, seconds]
 
-    # for the next day = when wait_time < cur_time
-    if wait_time_sec < cur_time_sec:
-        wait_time_sec += 86400
+def convert_to_seconds(time: str):
+    """Converts hh:mm:ss time into seconds
+    Args:
+        time(str): time in format hh:mm:ss to convert in seconds    
 
-    # wait_time - current time (in sec) = the time till the event (in sec)
-    var_time_till = wait_time_sec - cur_time_sec
+    Returns:
+        int: time in seconds
+    """
+    return (((int(splitting_time(time)[0]) * 60) +
+             int(splitting_time(time)[1])) * 60) + int(splitting_time(time)[2])
 
+def seconds_till(event_time: str):
+    """Calculates, how many seconds it takes to an event
+    Args:
+        event_time(str): the time, the event is going to happen
+
+    Returns:
+        int: time difference between now and the event in seconds
+    """
+    if convert_to_seconds(event_time) < convert_to_seconds(current_time()):
+        return ((convert_to_seconds(event_time) + 86400) -
+                 convert_to_seconds(current_time()))
+
+def format_back(time: int):
+    """formats time back in format hh:mm:ss
+    Args:
+        time(int): time in seconds
+
+    Returns:
+        string: time in format hh:mm:ss"""
     # convert back the seconds in hours, minutes and seconds
-    calc_time_till = var_time_till
-    time_till_h = calc_time_till // 3600
-    calc_time_till = calc_time_till - (time_till_h * 3600)
-    time_till_m = calc_time_till // 60
-    calc_time_till = calc_time_till - (time_till_m * 60)
-    time_till_s = calc_time_till
+    calc_time_till = time
+    hours = calc_time_till // 3600
+    calc_time_till = calc_time_till - (hours * 3600)
+    minutes = calc_time_till // 60
+    calc_time_till = calc_time_till - (minutes * 60)
+    seconds = calc_time_till
 
-    # convert back to string, to add a 0,
-    #  if there is only one character
-    time_till_h = str(time_till_h)
-    time_till_m = str(time_till_m)
-    time_till_s = str(time_till_s)
+    # typecast to string
+    hours = str(hours)
+    minutes = str(minutes)
+    seconds = str(seconds)
 
     # puts a 0 before the number,
     # if there only is one character
-    if len(time_till_h) == 1:
-        time_till_h = "0" + time_till_h
+    if len(hours) == 1:
+        hours = "0" + hours
 
-    if len(time_till_m) == 1:
-        time_till_m = "0" + time_till_m
+    if len(minutes) == 1:
+        minutes = "0" + minutes
 
-    if len(time_till_s) == 1:
-        time_till_s = "0" + time_till_s
+    if len(seconds) == 1:
+        seconds = "0" + seconds
 
-    str_time_till = time_till_h + ":" + time_till_m + ":" + time_till_s
+    str_time_till = hours + ":" + minutes + ":" + seconds
     return str_time_till
-
-def time_till_sec(wait_time: str):
-    """calculates the time till an event
-
-    Args:
-        wait_time(str): the time, the event happes
-
-    Returns:
-        str: time the event in hh:mm:ss"""
-    cur_time = str(datetime.datetime.now()).split(" ")[1].split(".")[0]
-    wait_time = str(wait_time)
-
-    # get hours, min, sec from format hh:mm:ss
-    split_cur_time = cur_time.split(":")
-    cur_time_h = split_cur_time[0]
-    cur_time_m = split_cur_time[1]
-    cur_time_s = split_cur_time[2]
-
-    split_wait_time = wait_time.split(":")
-    wait_time_h = split_wait_time[0]
-    wait_time_m = split_wait_time[1]
-    wait_time_s = split_wait_time[2]
-
-    # converts the time hh:mm:ss in seconds
-    cur_time_sec = (((int(cur_time_h) * 60) + int(cur_time_m)) * 60) + int(cur_time_s)
-    wait_time_sec = (((int(wait_time_h) * 60) + int(wait_time_m)) * 60) + int(wait_time_s)
-
-    # for the next day = when wait_time < cur_time
-    if wait_time_sec < cur_time_sec:
-        wait_time_sec += 86400
-
-    # wait_time - current time (in sec) = the time till the event (in sec)
-    var_time_till = wait_time_sec - cur_time_sec
-
-    return var_time_till
-
-def time_in_sec(time: str):
-    """converts hh:mm:ss time in seconds
-
-    Args:
-        time(str): the time you want to convert
-
-    Returns:
-        int: time in seconds"""
-    time = str(time)
-
-    split_time = time.split(":")
-    time_h = split_time[0]
-    time_m = split_time[1]
-    time_s = split_time[2]
-
-    time =  (((int(time_h) * 60) + int(time_m)) * 60) + int(time_s)
-
-    return time

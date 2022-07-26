@@ -1,31 +1,23 @@
-def ins_sort(lst: list):
-    """insertion sort: takes one element out of the list
-    and finds it correct place. Only works, because a area
-    of the list is sorted. In this area, the programm
-    finds the correct place for the element.
+"""no modules imported"""
+
+def tuple_sort(lst: list):
+    """sorts list of tuples by first element in tuple
+
     Args:
-        lst(list): the list to sort
-    Returnes:
-        list: the sorted list
+        lst(list): list to sort
+
+    Returns:
+        list: sorted list
     """
 
-    try:
-        for element in range(1, len(lst)):
+    # sort list
+    new_ele = 0
+    new_lis_len = len(lst)
+    for ele in range(0, new_lis_len):
+        for elem in range(0, new_lis_len-ele-1):
+            if lst[elem][new_ele] > lst[elem + 1][new_ele]:
+                new_tem = lst[elem]
+                lst[elem]= lst[elem + 1]
+                lst[elem + 1]= new_tem
 
-            temp = lst[element]
-
-            # Move elements of list, that are
-            # bigger than temp, to one position ahead
-            # of their current position
-            element_before = element - 1
-            while element_before >= 0 and temp < lst[element_before]:
-                lst[element_before + 1] = lst[element_before]
-                element_before -= 1
-            # then fills the empty spot
-            # with temp
-            lst[element_before + 1] = temp
-
-        return lst
-
-    except TypeError:
-        return None
+    return lst
