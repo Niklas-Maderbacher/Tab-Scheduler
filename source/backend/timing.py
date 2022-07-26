@@ -44,12 +44,9 @@ def seconds_till(event_time: str):
     Returns:
         int: time difference between now and the event in seconds
     """
-    if convert_to_seconds(event_time) < convert_to_seconds(current_time()):
-        return ((convert_to_seconds(event_time) + 86400) -
-                 convert_to_seconds(current_time()))
-
-    if convert_to_seconds(event_time) > convert_to_seconds(current_time()):
-        return (convert_to_seconds(event_time) - convert_to_seconds(current_time()))
+    return (((convert_to_seconds(event_time) + 86400) - convert_to_seconds(current_time()))
+            if convert_to_seconds(event_time) < convert_to_seconds(current_time())
+            else (convert_to_seconds(event_time) - convert_to_seconds(current_time())))
 
 def format_back(time: int):
     """formats time back in format hh:mm:ss

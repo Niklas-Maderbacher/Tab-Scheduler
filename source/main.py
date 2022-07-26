@@ -3,7 +3,7 @@ from backend import open_tab
 from backend import convert_to_seconds, format_back
 from backend import tuple_sort
 
-TEXT = ""
+TEXT = "yes"
 links_to_open = []
 
 # save in txt file for pylint
@@ -21,7 +21,7 @@ print("   ╚═╝   ╚═╝  ╚═╝╚═════╝     ╚═══
         "╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝")
 
 
-while TEXT != "no":
+while TEXT == "yes":
     url = input("Enter url (https://www.google.com): ")
     time = input("Enter time (hours:minutes:seconds): ")
 
