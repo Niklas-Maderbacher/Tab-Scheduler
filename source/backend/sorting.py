@@ -10,7 +10,6 @@ def tuple_sort(lst: list):
         list: sorted list
     """
 
-    # sort list
     new_ele = 0
     new_lis_len = len(lst)
     for ele in range(0, new_lis_len):

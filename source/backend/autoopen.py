@@ -23,5 +23,6 @@ def open_tab(website_link: str, time_to_open: str):
 
     else:
         # waits so many second, till the current time equals the input time
+        # and opens it after that
         time.sleep(int(timing.seconds_till(time_to_open)))
         webbrowser.open(website_link, new=2, autoraise=False)

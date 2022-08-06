@@ -23,7 +23,7 @@ print("   ╚═╝   ╚═╝  ╚═╝╚═════╝     ╚═══
 
 while TEXT == "yes":
     url = input("Enter url (https://www.google.com): ")
-    time = input("Enter time (hours:minutes:seconds): ")
+    time = input("Enter datetime (hours:minutes:seconds): ")
 
     temp = (time, url)
     links_to_open.append(temp)
