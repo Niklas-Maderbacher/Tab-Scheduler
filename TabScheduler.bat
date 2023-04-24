@@ -1,1 +1,0 @@
-python C:\Users\n.maderbacher\Documents\Tab-Scheduler\source\main.py
